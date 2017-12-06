@@ -13,7 +13,7 @@ $ npm install --save fade-promise
 ```js
 import fadePromise from 'fade-promise';
 
-fadePromise(element, to, duration).then((element, to, duration) => {
+fadePromise(element, to[, duration]).then((element, to, duration) => {
   console.log('done !');
 });
 ```
