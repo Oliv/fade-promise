@@ -8,7 +8,7 @@ export default function fade(element, to, duration = 300) {
   const initValue = +element.style.getPropertyValue('opacity');
   let start = null;
 
-  const fn = (t) => (to - initValue)/duration*t + initValue;
+  const linear = (t) => (to - initValue) / duration * t + initValue;
 
   return new Promise((resolve, reject) => {
     if (to > 1 || to < 0)
@@ -24,11 +24,14 @@ export default function fade(element, to, duration = 300) {
       const progress = timestamp - start;
       const value = +element.style.getPropertyValue('opacity');
 
-      element.style.opacity = fn(progress);
+      element.style.setProperty('opacity', linear(progress));
 
       if (progress < duration) {
         requestAnimationFrame(doFade);
       } else {
+        if (to !== +element.style.getPropertyValue('opacity'))
+          element.style.setProperty('opacity', to);
+
         resolve(element, to, duration);
       }
     }
