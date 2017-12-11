@@ -1,6 +1,6 @@
 {
   "name": "fade-promise",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Promisified fade in es6 using requestAnimationFrame",
   "main": "index.js",
   "scripts": {
